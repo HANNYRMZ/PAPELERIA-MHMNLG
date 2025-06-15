@@ -1,1129 +1,1071 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Equipo alfa buena maravilla onda dinamita escuadrón lobo - Tu tienda completa</title>
-  <style>
-    /* Reset y estilo general */
-    * {
-      box-sizing: border-box;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mi Tienda - Grupo 412</title>
+<style>
+  :root {
+    --primary-color: #2563eb;
+    --secondary-color: #dc2626;
+    --accent-color: #059669;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --background: #f8fafc;
+    --card-bg: #ffffff;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: var(--background);
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+
+  header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    padding: 2rem 1rem;
+    text-align: center;
+    color: white;
+    box-shadow: var(--shadow-lg);
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    font-weight: 700;
+    animation: titulo-animado 2s ease forwards;
+    opacity: 0;
+  }
+
+  @keyframes titulo-animado {
+    0% { opacity: 0; transform: translateY(-20px);}
+    100% { opacity: 1; transform: translateY(0);}
+  }
+
+  nav {
+    background: var(--card-bg);
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  nav a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+  }
+
+  nav a:hover, nav a.active {
+    background: var(--primary-color);
+    color: white;
+    border-bottom-color: var(--secondary-color);
+  }
+
+  main {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  .integrantes h2 {
+    color: var(--primary-color);
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+  }
+
+  .integrantes ul {
+    list-style: none;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .integrantes li {
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    background: var(--background);
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
+  }
+
+  .integrantes p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-top: 1.5rem;
+  }
+
+  .catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .producto {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .producto:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-5px);
+  }
+
+  .producto img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .producto-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .producto h3 {
+    margin: 0 0 0.5rem;
+    color: var(--text-dark);
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .producto p {
+    flex-grow: 1;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+  }
+
+  .producto .precio {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-primary {
+    background: var(--primary-color);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .btn-secondary {
+    background: var(--secondary-color);
+    color: white;
+  }
+
+  .btn-secondary:hover {
+    background: #b91c1c;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .btn-accent {
+    background: var(--accent-color);
+    color: white;
+  }
+
+  .btn-accent:hover {
+    background: #047857;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Paginación */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+  }
+
+  .pagination button {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .pagination button:hover, .pagination button.active {
+    background: var(--primary-color);
+    color: white;
+  }
+
+  .pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Carrito */
+  aside.carrito {
+    position: fixed;
+    top: 80px;
+    right: 0;
+    width: 380px;
+    max-height: 80vh;
+    background: var(--card-bg);
+    border-left: 4px solid var(--primary-color);
+    box-shadow: var(--shadow-lg);
+    padding: 1.5rem;
+    overflow-y: auto;
+    z-index: 1000;
+    border-radius: 12px 0 0 12px;
+  }
+
+  aside.carrito h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  ul.lista-carrito {
+    list-style: none;
+    padding-left: 0;
+    max-height: 50vh;
+    overflow-y: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  ul.lista-carrito li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: var(--background);
+    border-radius: 8px;
+    transition: background 0.3s ease;
+  }
+
+  ul.lista-carrito li:hover {
+    background: #e2e8f0;
+  }
+
+  ul.lista-carrito img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-right: 1rem;
+  }
+
+  ul.lista-carrito .info {
+    flex-grow: 1;
+  }
+
+  ul.lista-carrito .info p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  ul.lista-carrito .precio {
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin-left: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  ul.lista-carrito button.borrar {
+    background: var(--secondary-color);
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  ul.lista-carrito button.borrar:hover {
+    background: #b91c1c;
+    transform: scale(1.1);
+  }
+
+  .total-carrito {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    text-align: center;
+    padding: 1rem;
+    background: var(--background);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
+  /* Sección contacto */
+  section#contacto h2 {
+    color: var(--primary-color);
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+  }
+
+  section#contacto p {
+    margin: 0.5rem 0 1.5rem;
+    font-size: 1.1rem;
+    color: var(--text-light);
+  }
+
+  .mapa {
+    width: 100%;
+    height: 400px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    background: var(--text-dark);
+    color: white;
+    margin-top: 4rem;
+    font-weight: 500;
+  }
+
+  /* Responsive */
+  @media(max-width: 768px) {
+    header h1 {
+      font-size: 2rem;
     }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0; padding: 0;
-      background-color: #f9f9f9;
-      color: #333;
-    }
-    header {
-      background-color: #004aad;
-      color: white;
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-    header .logo {
-      font-weight: bold;
-      font-size: 24px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    header .logo img {
-      height: 40px;
-    }
+
     nav {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
-    nav button {
-      background: #ff5722;
-      border: none;
-      color: white;
-      padding: 10px 18px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background 0.3s ease;
-    }
-    nav button:hover {
-      background: #e64a19;
-    }
-    main {
-      max-width: 1200px;
-      margin: 20px auto;
-      padding: 0 15px;
-    }
-    section {
-      margin-bottom: 40px;
-    }
-    h2 {
-      border-bottom: 3px solid #004aad;
-      padding-bottom: 8px;
-      margin-bottom: 15px;
+      position: sticky;
+      top: 0;
     }
 
-    /* Inicio */
-    #inicio .eslogan {
-      font-size: 18px;
-      margin-top: 5px;
-      margin-bottom: 15px;
-      color: #555;
-    }
-    #inicio .destacados {
-      display: flex;
-      gap: 15px;
-      overflow-x: auto;
-      padding-bottom: 10px;
-    }
-    #inicio .destacados img {
-      height: 180px;
-      border-radius: 10px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-      flex-shrink: 0;
+    nav a {
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
     }
 
-    /* Catálogo */
-    .categoria {
-      margin-bottom: 30px;
-    }
-    .categoria h3 {
-      background: #007bff;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 6px;
-      margin-bottom: 15px;
-      display: inline-block;
-    }
-    .productos {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-    .producto {
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-      width: 180px;
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      transition: transform 0.2s;
-    }
-    .producto:hover {
-      transform: translateY(-5px);
-    }
-    .producto img {
-      max-width: 120px;
-      margin-bottom: 10px;
-      border-radius: 6px;
-    }
-    .producto strong {
-      color: #004aad;
-      font-size: 16px;
-      margin-bottom: 6px;
-    }
-    .producto p.descripcion {
-      font-size: 14px;
-      color: #555;
-      margin-bottom: 8px;
-    }
-    .producto p.precio {
-      font-weight: bold;
-      color: #ff5722;
-      margin-bottom: 10px;
-    }
-    .producto button.agregar {
-      background: #004aad;
-      border: none;
-      color: white;
-      padding: 8px 12px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: 600;
+    aside.carrito {
+      position: static;
       width: 100%;
-      transition: background 0.3s ease;
-    }
-    .producto button.agregar:hover {
-      background: #002f6c;
-    }
-
-    /* Buscador */
-    #buscador {
-      margin-bottom: 40px;
-    }
-    #buscador input, #buscador select {
-      padding: 10px;
-      font-size: 16px;
-      margin-right: 10px;
-      border: 2px solid #004aad;
-      border-radius: 6px;
-    }
-    #buscador input:focus, #buscador select:focus {
-      outline: none;
-      border-color: #ff5722;
+      max-height: none;
+      border-left: none;
+      border-top: 4px solid var(--primary-color);
+      box-shadow: var(--shadow);
+      margin-top: 2rem;
+      border-radius: 12px;
     }
 
-    /* Promociones */
-    #promociones {
-      background: #ffccbc;
-      border-radius: 10px;
-      padding: 15px;
-      color: #bf360c;
+    .catalogo {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
     }
 
-    /* Servicios */
-    #servicios ul {
-      list-style-type: disc;
-      padding-left: 20px;
+    .integrantes ul {
+      grid-template-columns: 1fr;
     }
 
-    /* Información */
-    #informacion ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    #informacion li {
-      margin-bottom: 8px;
-      font-size: 14px;
-    }
-    #informacion a {
-      color: #004aad;
-      text-decoration: none;
-    }
-    #informacion a:hover {
-      text-decoration: underline;
+    main {
+      padding: 0 0.5rem;
     }
 
-    /* Formulario */
-    #contacto form {
-      max-width: 400px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+    .card {
+      padding: 1.5rem;
     }
-    #contacto input, #contacto textarea {
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 14px;
-      resize: vertical;
-    }
-    #contacto button {
-      background: #004aad;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 16px;
-      transition: background 0.3s ease;
-    }
-    #contacto button:hover {
-      background: #002f6c;
-    }
+  }
 
-    /* Carrito */
-    #carrito {
-      position: fixed;
-      top: 80px;
-      right: 20px;
-      width: 280px;
-      max-height: 400px;
-      overflow-y: auto;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-      padding: 15px;
-      z-index: 1000;
-      display: none;
+  @media(max-width: 480px) {
+    nav {
       flex-direction: column;
     }
-    #carrito h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      color: #004aad;
+
+    nav a {
       text-align: center;
-    }
-    #carrito ul {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 10px 0;
-      flex-grow: 1;
-      overflow-y: auto;
-    }
-    #carrito li {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      font-size: 14px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 6px;
-    }
-    #carrito button.cerrar {
-      align-self: center;
-      background: #ff5722;
-      border: none;
-      color: white;
-      padding: 6px 12px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: 600;
-      margin-top: 10px;
-    }
-    #carrito .total {
-      font-weight: bold;
-      font-size: 16px;
-      margin-top: 10px;
-      text-align: right;
-      color: #004aad;
+      border-bottom: 1px solid #e5e7eb;
+      border-radius: 0;
     }
 
-    /* Responsive */
-    @media (max-width: 700px) {
-      .productos {
-        justify-content: center;
-      }
-      #carrito {
-        width: 90%;
-        right: 5%;
-        top: 70px;
-      }
+    .catalogo {
+      grid-template-columns: 1fr;
     }
-  </style>
+
+    .pagination {
+      flex-wrap: wrap;
+    }
+  }
+</style>
 </head>
 <body>
 
-  <header>
-    <div class="logo">
-      <img src="https://img.icons8.com/ios-filled/50/ffffff/school-bus.png" alt="Logo Papelería" />
-      Equipo alfa buena maravilla onda dinamita escuadrón lobo
-    </div>
-    <nav>
-      <button onclick="mostrarSeccion('inicio')">Inicio</button>
-      <button onclick="mostrarSeccion('catalogo')">Catálogo</button>
-      <button onclick="mostrarSeccion('promociones')">Ofertas</button>
-      <button onclick="mostrarSeccion('servicios')">Servicios</button>
-      <button onclick="mostrarSeccion('informacion')">Contacto</button>
-      <button onclick="mostrarSeccion('contacto')">Formulario</button>
-      <button onclick="toggleCarrito()">Carrito 🛒</button>
-    </nav>
-  </header>
+<header>
+  <h1>Bienvenidos a Nuestra Tienda - Grupo 412</h1>
+</header>
 
-  <main>
-    <section id="inicio">
-      <h2>Bienvenido a la Papelería Equipo alfa buena maravilla onda dinamita escuadrón lobo</h2>
-      <p class="eslogan">Los mejores productos para tu escuela con los mejores precios.</p>
-      <div class="destacados">
-        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=80" alt="Útiles escolares" />
-        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=400&q=80" alt="Mochilas escolares" />
-        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Material didáctico" />
-      </div>
-    </section>
+<nav>
+  <a href="#inicio" onclick="mostrarSeccion('inicio')" class="nav-link active">Inicio</a>
+  <a href="#catalogo" onclick="mostrarSeccion('catalogo')" class="nav-link">Catálogo</a>
+  <a href="#contacto" onclick="mostrarSeccion('contacto')" class="nav-link">Contacto</a>
+  <a href="#escatepec" onclick="mostrarSeccion('escatepec')" class="nav-link">Escatepec</a>
+</nav>
 
-    
-<section id="catalogo" style="display:none;">
-  <h2>Catálogo de productos</h2>
-  <div class="productos">
-    <div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+1" alt="Cuadernos Modelo 1" style="width:100px;height:100px;"><br>
-        <strong>Cuadernos Modelo 1</strong><br>
-        <p>Descripción del producto 1.</p>
-        <p>Precio: $18.66</p>
-        <button onclick="agregarAlCarrito('Cuadernos Modelo 1', 18.66)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+2" alt="Mochilas Modelo 2" style="width:100px;height:100px;"><br>
-        <strong>Mochilas Modelo 2</strong><br>
-        <p>Descripción del producto 2.</p>
-        <p>Precio: $166.55</p>
-        <button onclick="agregarAlCarrito('Mochilas Modelo 2', 166.55)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+3" alt="Plumas Modelo 3" style="width:100px;height:100px;"><br>
-        <strong>Plumas Modelo 3</strong><br>
-        <p>Descripción del producto 3.</p>
-        <p>Precio: $114.73</p>
-        <button onclick="agregarAlCarrito('Plumas Modelo 3', 114.73)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+4" alt="Colores Modelo 4" style="width:100px;height:100px;"><br>
-        <strong>Colores Modelo 4</strong><br>
-        <p>Descripción del producto 4.</p>
-        <p>Precio: $480.60</p>
-        <button onclick="agregarAlCarrito('Colores Modelo 4', 480.6)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+5" alt="Papel Modelo 5" style="width:100px;height:100px;"><br>
-        <strong>Papel Modelo 5</strong><br>
-        <p>Descripción del producto 5.</p>
-        <p>Precio: $53.74</p>
-        <button onclick="agregarAlCarrito('Papel Modelo 5', 53.74)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+6" alt="Calculadoras Modelo 6" style="width:100px;height:100px;"><br>
-        <strong>Calculadoras Modelo 6</strong><br>
-        <p>Descripción del producto 6.</p>
-        <p>Precio: $418.84</p>
-        <button onclick="agregarAlCarrito('Calculadoras Modelo 6', 418.84)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+7" alt="Tijeras Modelo 7" style="width:100px;height:100px;"><br>
-        <strong>Tijeras Modelo 7</strong><br>
-        <p>Descripción del producto 7.</p>
-        <p>Precio: $379.60</p>
-        <button onclick="agregarAlCarrito('Tijeras Modelo 7', 379.6)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+8" alt="Pegamento Modelo 8" style="width:100px;height:100px;"><br>
-        <strong>Pegamento Modelo 8</strong><br>
-        <p>Descripción del producto 8.</p>
-        <p>Precio: $127.47</p>
-        <button onclick="agregarAlCarrito('Pegamento Modelo 8', 127.47)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+9" alt="Carpetas Modelo 9" style="width:100px;height:100px;"><br>
-        <strong>Carpetas Modelo 9</strong><br>
-        <p>Descripción del producto 9.</p>
-        <p>Precio: $200.89</p>
-        <button onclick="agregarAlCarrito('Carpetas Modelo 9', 200.89)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+10" alt="Resaltadores Modelo 10" style="width:100px;height:100px;"><br>
-        <strong>Resaltadores Modelo 10</strong><br>
-        <p>Descripción del producto 10.</p>
-        <p>Precio: $196.05</p>
-        <button onclick="agregarAlCarrito('Resaltadores Modelo 10', 196.05)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+11" alt="Cuadernos Modelo 11" style="width:100px;height:100px;"><br>
-        <strong>Cuadernos Modelo 11</strong><br>
-        <p>Descripción del producto 11.</p>
-        <p>Precio: $44.36</p>
-        <button onclick="agregarAlCarrito('Cuadernos Modelo 11', 44.36)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+12" alt="Mochilas Modelo 12" style="width:100px;height:100px;"><br>
-        <strong>Mochilas Modelo 12</strong><br>
-        <p>Descripción del producto 12.</p>
-        <p>Precio: $384.66</p>
-        <button onclick="agregarAlCarrito('Mochilas Modelo 12', 384.66)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+13" alt="Plumas Modelo 13" style="width:100px;height:100px;"><br>
-        <strong>Plumas Modelo 13</strong><br>
-        <p>Descripción del producto 13.</p>
-        <p>Precio: $405.88</p>
-        <button onclick="agregarAlCarrito('Plumas Modelo 13', 405.88)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+14" alt="Colores Modelo 14" style="width:100px;height:100px;"><br>
-        <strong>Colores Modelo 14</strong><br>
-        <p>Descripción del producto 14.</p>
-        <p>Precio: $358.17</p>
-        <button onclick="agregarAlCarrito('Colores Modelo 14', 358.17)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+15" alt="Papel Modelo 15" style="width:100px;height:100px;"><br>
-        <strong>Papel Modelo 15</strong><br>
-        <p>Descripción del producto 15.</p>
-        <p>Precio: $211.51</p>
-        <button onclick="agregarAlCarrito('Papel Modelo 15', 211.51)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+16" alt="Calculadoras Modelo 16" style="width:100px;height:100px;"><br>
-        <strong>Calculadoras Modelo 16</strong><br>
-        <p>Descripción del producto 16.</p>
-        <p>Precio: $232.08</p>
-        <button onclick="agregarAlCarrito('Calculadoras Modelo 16', 232.08)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+17" alt="Tijeras Modelo 17" style="width:100px;height:100px;"><br>
-        <strong>Tijeras Modelo 17</strong><br>
-        <p>Descripción del producto 17.</p>
-        <p>Precio: $286.30</p>
-        <button onclick="agregarAlCarrito('Tijeras Modelo 17', 286.3)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+18" alt="Pegamento Modelo 18" style="width:100px;height:100px;"><br>
-        <strong>Pegamento Modelo 18</strong><br>
-        <p>Descripción del producto 18.</p>
-        <p>Precio: $166.53</p>
-        <button onclick="agregarAlCarrito('Pegamento Modelo 18', 166.53)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+19" alt="Carpetas Modelo 19" style="width:100px;height:100px;"><br>
-        <strong>Carpetas Modelo 19</strong><br>
-        <p>Descripción del producto 19.</p>
-        <p>Precio: $496.91</p>
-        <button onclick="agregarAlCarrito('Carpetas Modelo 19', 496.91)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+20" alt="Resaltadores Modelo 20" style="width:100px;height:100px;"><br>
-        <strong>Resaltadores Modelo 20</strong><br>
-        <p>Descripción del producto 20.</p>
-        <p>Precio: $386.21</p>
-        <button onclick="agregarAlCarrito('Resaltadores Modelo 20', 386.21)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+21" alt="Cuadernos Modelo 21" style="width:100px;height:100px;"><br>
-        <strong>Cuadernos Modelo 21</strong><br>
-        <p>Descripción del producto 21.</p>
-        <p>Precio: $264.69</p>
-        <button onclick="agregarAlCarrito('Cuadernos Modelo 21', 264.69)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+22" alt="Mochilas Modelo 22" style="width:100px;height:100px;"><br>
-        <strong>Mochilas Modelo 22</strong><br>
-        <p>Descripción del producto 22.</p>
-        <p>Precio: $452.75</p>
-        <button onclick="agregarAlCarrito('Mochilas Modelo 22', 452.75)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+23" alt="Plumas Modelo 23" style="width:100px;height:100px;"><br>
-        <strong>Plumas Modelo 23</strong><br>
-        <p>Descripción del producto 23.</p>
-        <p>Precio: $157.86</p>
-        <button onclick="agregarAlCarrito('Plumas Modelo 23', 157.86)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+24" alt="Colores Modelo 24" style="width:100px;height:100px;"><br>
-        <strong>Colores Modelo 24</strong><br>
-        <p>Descripción del producto 24.</p>
-        <p>Precio: $341.52</p>
-        <button onclick="agregarAlCarrito('Colores Modelo 24', 341.52)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+25" alt="Papel Modelo 25" style="width:100px;height:100px;"><br>
-        <strong>Papel Modelo 25</strong><br>
-        <p>Descripción del producto 25.</p>
-        <p>Precio: $351.79</p>
-        <button onclick="agregarAlCarrito('Papel Modelo 25', 351.79)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+26" alt="Calculadoras Modelo 26" style="width:100px;height:100px;"><br>
-        <strong>Calculadoras Modelo 26</strong><br>
-        <p>Descripción del producto 26.</p>
-        <p>Precio: $311.60</p>
-        <button onclick="agregarAlCarrito('Calculadoras Modelo 26', 311.6)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+27" alt="Tijeras Modelo 27" style="width:100px;height:100px;"><br>
-        <strong>Tijeras Modelo 27</strong><br>
-        <p>Descripción del producto 27.</p>
-        <p>Precio: $183.82</p>
-        <button onclick="agregarAlCarrito('Tijeras Modelo 27', 183.82)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+28" alt="Pegamento Modelo 28" style="width:100px;height:100px;"><br>
-        <strong>Pegamento Modelo 28</strong><br>
-        <p>Descripción del producto 28.</p>
-        <p>Precio: $98.74</p>
-        <button onclick="agregarAlCarrito('Pegamento Modelo 28', 98.74)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+29" alt="Carpetas Modelo 29" style="width:100px;height:100px;"><br>
-        <strong>Carpetas Modelo 29</strong><br>
-        <p>Descripción del producto 29.</p>
-        <p>Precio: $269.91</p>
-        <button onclick="agregarAlCarrito('Carpetas Modelo 29', 269.91)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+30" alt="Resaltadores Modelo 30" style="width:100px;height:100px;"><br>
-        <strong>Resaltadores Modelo 30</strong><br>
-        <p>Descripción del producto 30.</p>
-        <p>Precio: $383.31</p>
-        <button onclick="agregarAlCarrito('Resaltadores Modelo 30', 383.31)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+31" alt="Cuadernos Modelo 31" style="width:100px;height:100px;"><br>
-        <strong>Cuadernos Modelo 31</strong><br>
-        <p>Descripción del producto 31.</p>
-        <p>Precio: $246.83</p>
-        <button onclick="agregarAlCarrito('Cuadernos Modelo 31', 246.83)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+32" alt="Mochilas Modelo 32" style="width:100px;height:100px;"><br>
-        <strong>Mochilas Modelo 32</strong><br>
-        <p>Descripción del producto 32.</p>
-        <p>Precio: $68.54</p>
-        <button onclick="agregarAlCarrito('Mochilas Modelo 32', 68.54)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+33" alt="Plumas Modelo 33" style="width:100px;height:100px;"><br>
-        <strong>Plumas Modelo 33</strong><br>
-        <p>Descripción del producto 33.</p>
-        <p>Precio: $440.02</p>
-        <button onclick="agregarAlCarrito('Plumas Modelo 33', 440.02)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+34" alt="Colores Modelo 34" style="width:100px;height:100px;"><br>
-        <strong>Colores Modelo 34</strong><br>
-        <p>Descripción del producto 34.</p>
-        <p>Precio: $358.88</p>
-        <button onclick="agregarAlCarrito('Colores Modelo 34', 358.88)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+35" alt="Papel Modelo 35" style="width:100px;height:100px;"><br>
-        <strong>Papel Modelo 35</strong><br>
-        <p>Descripción del producto 35.</p>
-        <p>Precio: $272.40</p>
-        <button onclick="agregarAlCarrito('Papel Modelo 35', 272.4)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+36" alt="Calculadoras Modelo 36" style="width:100px;height:100px;"><br>
-        <strong>Calculadoras Modelo 36</strong><br>
-        <p>Descripción del producto 36.</p>
-        <p>Precio: $154.51</p>
-        <button onclick="agregarAlCarrito('Calculadoras Modelo 36', 154.51)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+37" alt="Tijeras Modelo 37" style="width:100px;height:100px;"><br>
-        <strong>Tijeras Modelo 37</strong><br>
-        <p>Descripción del producto 37.</p>
-        <p>Precio: $260.50</p>
-        <button onclick="agregarAlCarrito('Tijeras Modelo 37', 260.5)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+38" alt="Pegamento Modelo 38" style="width:100px;height:100px;"><br>
-        <strong>Pegamento Modelo 38</strong><br>
-        <p>Descripción del producto 38.</p>
-        <p>Precio: $18.34</p>
-        <button onclick="agregarAlCarrito('Pegamento Modelo 38', 18.34)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+39" alt="Carpetas Modelo 39" style="width:100px;height:100px;"><br>
-        <strong>Carpetas Modelo 39</strong><br>
-        <p>Descripción del producto 39.</p>
-        <p>Precio: $498.47</p>
-        <button onclick="agregarAlCarrito('Carpetas Modelo 39', 498.47)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+40" alt="Resaltadores Modelo 40" style="width:100px;height:100px;"><br>
-        <strong>Resaltadores Modelo 40</strong><br>
-        <p>Descripción del producto 40.</p>
-        <p>Precio: $263.77</p>
-        <button onclick="agregarAlCarrito('Resaltadores Modelo 40', 263.77)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+41" alt="Cuadernos Modelo 41" style="width:100px;height:100px;"><br>
-        <strong>Cuadernos Modelo 41</strong><br>
-        <p>Descripción del producto 41.</p>
-        <p>Precio: $198.67</p>
-        <button onclick="agregarAlCarrito('Cuadernos Modelo 41', 198.67)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+42" alt="Mochilas Modelo 42" style="width:100px;height:100px;"><br>
-        <strong>Mochilas Modelo 42</strong><br>
-        <p>Descripción del producto 42.</p>
-        <p>Precio: $14.35</p>
-        <button onclick="agregarAlCarrito('Mochilas Modelo 42', 14.35)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+43" alt="Plumas Modelo 43" style="width:100px;height:100px;"><br>
-        <strong>Plumas Modelo 43</strong><br>
-        <p>Descripción del producto 43.</p>
-        <p>Precio: $443.77</p>
-        <button onclick="agregarAlCarrito('Plumas Modelo 43', 443.77)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+44" alt="Colores Modelo 44" style="width:100px;height:100px;"><br>
-        <strong>Colores Modelo 44</strong><br>
-        <p>Descripción del producto 44.</p>
-        <p>Precio: $216.69</p>
-        <button onclick="agregarAlCarrito('Colores Modelo 44', 216.69)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+45" alt="Papel Modelo 45" style="width:100px;height:100px;"><br>
-        <strong>Papel Modelo 45</strong><br>
-        <p>Descripción del producto 45.</p>
-        <p>Precio: $410.90</p>
-        <button onclick="agregarAlCarrito('Papel Modelo 45', 410.9)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+46" alt="Calculadoras Modelo 46" style="width:100px;height:100px;"><br>
-        <strong>Calculadoras Modelo 46</strong><br>
-        <p>Descripción del producto 46.</p>
-        <p>Precio: $420.30</p>
-        <button onclick="agregarAlCarrito('Calculadoras Modelo 46', 420.3)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+47" alt="Tijeras Modelo 47" style="width:100px;height:100px;"><br>
-        <strong>Tijeras Modelo 47</strong><br>
-        <p>Descripción del producto 47.</p>
-        <p>Precio: $65.90</p>
-        <button onclick="agregarAlCarrito('Tijeras Modelo 47', 65.9)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+48" alt="Pegamento Modelo 48" style="width:100px;height:100px;"><br>
-        <strong>Pegamento Modelo 48</strong><br>
-        <p>Descripción del producto 48.</p>
-        <p>Precio: $383.05</p>
-        <button onclick="agregarAlCarrito('Pegamento Modelo 48', 383.05)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+49" alt="Carpetas Modelo 49" style="width:100px;height:100px;"><br>
-        <strong>Carpetas Modelo 49</strong><br>
-        <p>Descripción del producto 49.</p>
-        <p>Precio: $216.66</p>
-        <button onclick="agregarAlCarrito('Carpetas Modelo 49', 216.66)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+50" alt="Resaltadores Modelo 50" style="width:100px;height:100px;"><br>
-        <strong>Resaltadores Modelo 50</strong><br>
-        <p>Descripción del producto 50.</p>
-        <p>Precio: $16.21</p>
-        <button onclick="agregarAlCarrito('Resaltadores Modelo 50', 16.21)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+51" alt="Cuadernos Modelo 51" style="width:100px;height:100px;"><br>
-        <strong>Cuadernos Modelo 51</strong><br>
-        <p>Descripción del producto 51.</p>
-        <p>Precio: $245.58</p>
-        <button onclick="agregarAlCarrito('Cuadernos Modelo 51', 245.58)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+52" alt="Mochilas Modelo 52" style="width:100px;height:100px;"><br>
-        <strong>Mochilas Modelo 52</strong><br>
-        <p>Descripción del producto 52.</p>
-        <p>Precio: $125.04</p>
-        <button onclick="agregarAlCarrito('Mochilas Modelo 52', 125.04)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+53" alt="Plumas Modelo 53" style="width:100px;height:100px;"><br>
-        <strong>Plumas Modelo 53</strong><br>
-        <p>Descripción del producto 53.</p>
-        <p>Precio: $334.61</p>
-        <button onclick="agregarAlCarrito('Plumas Modelo 53', 334.61)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+54" alt="Colores Modelo 54" style="width:100px;height:100px;"><br>
-        <strong>Colores Modelo 54</strong><br>
-        <p>Descripción del producto 54.</p>
-        <p>Precio: $353.41</p>
-        <button onclick="agregarAlCarrito('Colores Modelo 54', 353.41)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+55" alt="Papel Modelo 55" style="width:100px;height:100px;"><br>
-        <strong>Papel Modelo 55</strong><br>
-        <p>Descripción del producto 55.</p>
-        <p>Precio: $474.80</p>
-        <button onclick="agregarAlCarrito('Papel Modelo 55', 474.8)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+56" alt="Calculadoras Modelo 56" style="width:100px;height:100px;"><br>
-        <strong>Calculadoras Modelo 56</strong><br>
-        <p>Descripción del producto 56.</p>
-        <p>Precio: $121.55</p>
-        <button onclick="agregarAlCarrito('Calculadoras Modelo 56', 121.55)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+57" alt="Tijeras Modelo 57" style="width:100px;height:100px;"><br>
-        <strong>Tijeras Modelo 57</strong><br>
-        <p>Descripción del producto 57.</p>
-        <p>Precio: $206.80</p>
-        <button onclick="agregarAlCarrito('Tijeras Modelo 57', 206.8)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+58" alt="Pegamento Modelo 58" style="width:100px;height:100px;"><br>
-        <strong>Pegamento Modelo 58</strong><br>
-        <p>Descripción del producto 58.</p>
-        <p>Precio: $499.68</p>
-        <button onclick="agregarAlCarrito('Pegamento Modelo 58', 499.68)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+59" alt="Carpetas Modelo 59" style="width:100px;height:100px;"><br>
-        <strong>Carpetas Modelo 59</strong><br>
-        <p>Descripción del producto 59.</p>
-        <p>Precio: $115.61</p>
-        <button onclick="agregarAlCarrito('Carpetas Modelo 59', 115.61)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+60" alt="Resaltadores Modelo 60" style="width:100px;height:100px;"><br>
-        <strong>Resaltadores Modelo 60</strong><br>
-        <p>Descripción del producto 60.</p>
-        <p>Precio: $84.41</p>
-        <button onclick="agregarAlCarrito('Resaltadores Modelo 60', 84.41)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+61" alt="Cuadernos Modelo 61" style="width:100px;height:100px;"><br>
-        <strong>Cuadernos Modelo 61</strong><br>
-        <p>Descripción del producto 61.</p>
-        <p>Precio: $156.78</p>
-        <button onclick="agregarAlCarrito('Cuadernos Modelo 61', 156.78)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+62" alt="Mochilas Modelo 62" style="width:100px;height:100px;"><br>
-        <strong>Mochilas Modelo 62</strong><br>
-        <p>Descripción del producto 62.</p>
-        <p>Precio: $41.34</p>
-        <button onclick="agregarAlCarrito('Mochilas Modelo 62', 41.34)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+63" alt="Plumas Modelo 63" style="width:100px;height:100px;"><br>
-        <strong>Plumas Modelo 63</strong><br>
-        <p>Descripción del producto 63.</p>
-        <p>Precio: $355.39</p>
-        <button onclick="agregarAlCarrito('Plumas Modelo 63', 355.39)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+64" alt="Colores Modelo 64" style="width:100px;height:100px;"><br>
-        <strong>Colores Modelo 64</strong><br>
-        <p>Descripción del producto 64.</p>
-        <p>Precio: $50.94</p>
-        <button onclick="agregarAlCarrito('Colores Modelo 64', 50.94)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+65" alt="Papel Modelo 65" style="width:100px;height:100px;"><br>
-        <strong>Papel Modelo 65</strong><br>
-        <p>Descripción del producto 65.</p>
-        <p>Precio: $70.33</p>
-        <button onclick="agregarAlCarrito('Papel Modelo 65', 70.33)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+66" alt="Calculadoras Modelo 66" style="width:100px;height:100px;"><br>
-        <strong>Calculadoras Modelo 66</strong><br>
-        <p>Descripción del producto 66.</p>
-        <p>Precio: $472.97</p>
-        <button onclick="agregarAlCarrito('Calculadoras Modelo 66', 472.97)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+67" alt="Tijeras Modelo 67" style="width:100px;height:100px;"><br>
-        <strong>Tijeras Modelo 67</strong><br>
-        <p>Descripción del producto 67.</p>
-        <p>Precio: $382.22</p>
-        <button onclick="agregarAlCarrito('Tijeras Modelo 67', 382.22)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+68" alt="Pegamento Modelo 68" style="width:100px;height:100px;"><br>
-        <strong>Pegamento Modelo 68</strong><br>
-        <p>Descripción del producto 68.</p>
-        <p>Precio: $198.77</p>
-        <button onclick="agregarAlCarrito('Pegamento Modelo 68', 198.77)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+69" alt="Carpetas Modelo 69" style="width:100px;height:100px;"><br>
-        <strong>Carpetas Modelo 69</strong><br>
-        <p>Descripción del producto 69.</p>
-        <p>Precio: $484.46</p>
-        <button onclick="agregarAlCarrito('Carpetas Modelo 69', 484.46)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+70" alt="Resaltadores Modelo 70" style="width:100px;height:100px;"><br>
-        <strong>Resaltadores Modelo 70</strong><br>
-        <p>Descripción del producto 70.</p>
-        <p>Precio: $54.32</p>
-        <button onclick="agregarAlCarrito('Resaltadores Modelo 70', 54.32)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+71" alt="Cuadernos Modelo 71" style="width:100px;height:100px;"><br>
-        <strong>Cuadernos Modelo 71</strong><br>
-        <p>Descripción del producto 71.</p>
-        <p>Precio: $297.90</p>
-        <button onclick="agregarAlCarrito('Cuadernos Modelo 71', 297.9)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+72" alt="Mochilas Modelo 72" style="width:100px;height:100px;"><br>
-        <strong>Mochilas Modelo 72</strong><br>
-        <p>Descripción del producto 72.</p>
-        <p>Precio: $443.03</p>
-        <button onclick="agregarAlCarrito('Mochilas Modelo 72', 443.03)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+73" alt="Plumas Modelo 73" style="width:100px;height:100px;"><br>
-        <strong>Plumas Modelo 73</strong><br>
-        <p>Descripción del producto 73.</p>
-        <p>Precio: $231.56</p>
-        <button onclick="agregarAlCarrito('Plumas Modelo 73', 231.56)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+74" alt="Colores Modelo 74" style="width:100px;height:100px;"><br>
-        <strong>Colores Modelo 74</strong><br>
-        <p>Descripción del producto 74.</p>
-        <p>Precio: $209.96</p>
-        <button onclick="agregarAlCarrito('Colores Modelo 74', 209.96)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+75" alt="Papel Modelo 75" style="width:100px;height:100px;"><br>
-        <strong>Papel Modelo 75</strong><br>
-        <p>Descripción del producto 75.</p>
-        <p>Precio: $195.14</p>
-        <button onclick="agregarAlCarrito('Papel Modelo 75', 195.14)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+76" alt="Calculadoras Modelo 76" style="width:100px;height:100px;"><br>
-        <strong>Calculadoras Modelo 76</strong><br>
-        <p>Descripción del producto 76.</p>
-        <p>Precio: $125.71</p>
-        <button onclick="agregarAlCarrito('Calculadoras Modelo 76', 125.71)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+77" alt="Tijeras Modelo 77" style="width:100px;height:100px;"><br>
-        <strong>Tijeras Modelo 77</strong><br>
-        <p>Descripción del producto 77.</p>
-        <p>Precio: $314.29</p>
-        <button onclick="agregarAlCarrito('Tijeras Modelo 77', 314.29)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+78" alt="Pegamento Modelo 78" style="width:100px;height:100px;"><br>
-        <strong>Pegamento Modelo 78</strong><br>
-        <p>Descripción del producto 78.</p>
-        <p>Precio: $244.28</p>
-        <button onclick="agregarAlCarrito('Pegamento Modelo 78', 244.28)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+79" alt="Carpetas Modelo 79" style="width:100px;height:100px;"><br>
-        <strong>Carpetas Modelo 79</strong><br>
-        <p>Descripción del producto 79.</p>
-        <p>Precio: $34.56</p>
-        <button onclick="agregarAlCarrito('Carpetas Modelo 79', 34.56)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+80" alt="Resaltadores Modelo 80" style="width:100px;height:100px;"><br>
-        <strong>Resaltadores Modelo 80</strong><br>
-        <p>Descripción del producto 80.</p>
-        <p>Precio: $382.31</p>
-        <button onclick="agregarAlCarrito('Resaltadores Modelo 80', 382.31)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+81" alt="Cuadernos Modelo 81" style="width:100px;height:100px;"><br>
-        <strong>Cuadernos Modelo 81</strong><br>
-        <p>Descripción del producto 81.</p>
-        <p>Precio: $56.02</p>
-        <button onclick="agregarAlCarrito('Cuadernos Modelo 81', 56.02)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+82" alt="Mochilas Modelo 82" style="width:100px;height:100px;"><br>
-        <strong>Mochilas Modelo 82</strong><br>
-        <p>Descripción del producto 82.</p>
-        <p>Precio: $161.78</p>
-        <button onclick="agregarAlCarrito('Mochilas Modelo 82', 161.78)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+83" alt="Plumas Modelo 83" style="width:100px;height:100px;"><br>
-        <strong>Plumas Modelo 83</strong><br>
-        <p>Descripción del producto 83.</p>
-        <p>Precio: $297.29</p>
-        <button onclick="agregarAlCarrito('Plumas Modelo 83', 297.29)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+84" alt="Colores Modelo 84" style="width:100px;height:100px;"><br>
-        <strong>Colores Modelo 84</strong><br>
-        <p>Descripción del producto 84.</p>
-        <p>Precio: $37.98</p>
-        <button onclick="agregarAlCarrito('Colores Modelo 84', 37.98)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+85" alt="Papel Modelo 85" style="width:100px;height:100px;"><br>
-        <strong>Papel Modelo 85</strong><br>
-        <p>Descripción del producto 85.</p>
-        <p>Precio: $28.64</p>
-        <button onclick="agregarAlCarrito('Papel Modelo 85', 28.64)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+86" alt="Calculadoras Modelo 86" style="width:100px;height:100px;"><br>
-        <strong>Calculadoras Modelo 86</strong><br>
-        <p>Descripción del producto 86.</p>
-        <p>Precio: $452.32</p>
-        <button onclick="agregarAlCarrito('Calculadoras Modelo 86', 452.32)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+87" alt="Tijeras Modelo 87" style="width:100px;height:100px;"><br>
-        <strong>Tijeras Modelo 87</strong><br>
-        <p>Descripción del producto 87.</p>
-        <p>Precio: $430.80</p>
-        <button onclick="agregarAlCarrito('Tijeras Modelo 87', 430.8)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+88" alt="Pegamento Modelo 88" style="width:100px;height:100px;"><br>
-        <strong>Pegamento Modelo 88</strong><br>
-        <p>Descripción del producto 88.</p>
-        <p>Precio: $90.17</p>
-        <button onclick="agregarAlCarrito('Pegamento Modelo 88', 90.17)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+89" alt="Carpetas Modelo 89" style="width:100px;height:100px;"><br>
-        <strong>Carpetas Modelo 89</strong><br>
-        <p>Descripción del producto 89.</p>
-        <p>Precio: $394.58</p>
-        <button onclick="agregarAlCarrito('Carpetas Modelo 89', 394.58)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+90" alt="Resaltadores Modelo 90" style="width:100px;height:100px;"><br>
-        <strong>Resaltadores Modelo 90</strong><br>
-        <p>Descripción del producto 90.</p>
-        <p>Precio: $270.35</p>
-        <button onclick="agregarAlCarrito('Resaltadores Modelo 90', 270.35)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+91" alt="Cuadernos Modelo 91" style="width:100px;height:100px;"><br>
-        <strong>Cuadernos Modelo 91</strong><br>
-        <p>Descripción del producto 91.</p>
-        <p>Precio: $265.34</p>
-        <button onclick="agregarAlCarrito('Cuadernos Modelo 91', 265.34)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+92" alt="Mochilas Modelo 92" style="width:100px;height:100px;"><br>
-        <strong>Mochilas Modelo 92</strong><br>
-        <p>Descripción del producto 92.</p>
-        <p>Precio: $114.69</p>
-        <button onclick="agregarAlCarrito('Mochilas Modelo 92', 114.69)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+93" alt="Plumas Modelo 93" style="width:100px;height:100px;"><br>
-        <strong>Plumas Modelo 93</strong><br>
-        <p>Descripción del producto 93.</p>
-        <p>Precio: $125.43</p>
-        <button onclick="agregarAlCarrito('Plumas Modelo 93', 125.43)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+94" alt="Colores Modelo 94" style="width:100px;height:100px;"><br>
-        <strong>Colores Modelo 94</strong><br>
-        <p>Descripción del producto 94.</p>
-        <p>Precio: $477.71</p>
-        <button onclick="agregarAlCarrito('Colores Modelo 94', 477.71)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+95" alt="Papel Modelo 95" style="width:100px;height:100px;"><br>
-        <strong>Papel Modelo 95</strong><br>
-        <p>Descripción del producto 95.</p>
-        <p>Precio: $235.45</p>
-        <button onclick="agregarAlCarrito('Papel Modelo 95', 235.45)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+96" alt="Calculadoras Modelo 96" style="width:100px;height:100px;"><br>
-        <strong>Calculadoras Modelo 96</strong><br>
-        <p>Descripción del producto 96.</p>
-        <p>Precio: $387.83</p>
-        <button onclick="agregarAlCarrito('Calculadoras Modelo 96', 387.83)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+97" alt="Tijeras Modelo 97" style="width:100px;height:100px;"><br>
-        <strong>Tijeras Modelo 97</strong><br>
-        <p>Descripción del producto 97.</p>
-        <p>Precio: $328.62</p>
-        <button onclick="agregarAlCarrito('Tijeras Modelo 97', 328.62)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+98" alt="Pegamento Modelo 98" style="width:100px;height:100px;"><br>
-        <strong>Pegamento Modelo 98</strong><br>
-        <p>Descripción del producto 98.</p>
-        <p>Precio: $370.77</p>
-        <button onclick="agregarAlCarrito('Pegamento Modelo 98', 370.77)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+99" alt="Carpetas Modelo 99" style="width:100px;height:100px;"><br>
-        <strong>Carpetas Modelo 99</strong><br>
-        <p>Descripción del producto 99.</p>
-        <p>Precio: $72.12</p>
-        <button onclick="agregarAlCarrito('Carpetas Modelo 99', 72.12)">Agregar al carrito</button>
-    </div>
-<div class="producto">
-        <img src="https://via.placeholder.com/150?text=Producto+100" alt="Resaltadores Modelo 100" style="width:100px;height:100px;"><br>
-        <strong>Resaltadores Modelo 100</strong><br>
-        <p>Descripción del producto 100.</p>
-        <p>Precio: $236.56</p>
-        <button onclick="agregarAlCarrito('Resaltadores Modelo 100', 236.56)">Agregar al carrito</button>
-    </div>
-  </div>
+<main>
+  <!-- Inicio -->
+  <section id="inicio" style="display:block;">
+    <div class="card integrantes">
+      <h2>Integrantes del Grupo 412</h2>
+      <ul>
+        <li>Hannah Charbel Morales Ramírez</li>
+        <li>Melani Naomi Díaz Fragoso</li>
+        <li>Giovany Aldair Cornelio Mandujano</li>
+        <li>Yolanda Melani Casasola Fonseca</li>
+        <li>Midori Natasha Hernández Laos</li>
+        <li>Aranda Ponce Luis Ernesto</li>
+      </ul>
+      <p>Bienvenidos a nuestra página web. Aquí encontrarás una gran variedad de productos con la mejor calidad y atención personalizada. Nuestro compromiso es ofrecerte la mejor experiencia de compra con productos de alta calidad y servicio excepcional.</p>
+    </div>
+  </section>
+
+  <!-- Catálogo -->
+  <section id="catalogo" style="display:none;">
+    <div class="catalogo" id="catalogo-productos">
+      <!-- Productos generados por JS -->
+    </div>
+    <div class="pagination" id="pagination">
+      <!-- Paginación generada por JS -->
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" style="display:none;">
+    <div class="card">
+      <h2>Contacto</h2>
+      <p><strong>Dirección:</strong> CECyTEM Plantel Ecatepec - Calle Sor Juana Inés de la Cruz S/N, Tierra Blanca, 55020 Ecatepec de Morelos, México</p>
+      <p><strong>Teléfono:</strong> +52 55 1234 5678</p>
+      <p><strong>Email:</strong> contacto@grupo412.com</p>
+      <p><strong>WhatsApp:</strong> <a href="https://wa.me/525515764800" target="_blank" style="color: var(--accent-color); font-weight: bold;">Enviar mensaje</a></p>
+
+      
+<div class="mapa">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3758.484820597813!2d-99.0247055850904!3d19.59575578677378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f0b1689bcd3d%3A0xbee8d18e1a9e57d5!2sCECyTEM%20Plantel%20Ecatepec!5e0!3m2!1ses-419!2smx!4v1718491596000!5m2!1ses-419!2smx"
+    width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+
+    </div>
+  </section>
+
+<!-- Formulario y enlace Escatepec -->
+<section id="escatepec" class="card" style="margin-top: 2rem;">
+  <h2>Formulario de Consulta</h2>
+  <form action="https://Localhost//paginas_php/nombre.php" method="post" target="_blank">
+    <label for="nombre">Nombre:</label><br>
+    <input type="text" id="nombre" name="nombre" required style="padding: 0.5rem; width: 100%; margin-bottom: 1rem;"><br>
+
+    <label for="mensaje">Mensaje:</label><br>
+    <textarea id="mensaje" name="mensaje" rows="4" required style="padding: 0.5rem; width: 100%; margin-bottom: 1rem;"></textarea><br>
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+  <p style="margin-top: 1.5rem;">
+    También puedes <a href="https://Localhost//paginas_php/nombre.php" target="_blank" style="color: var(--accent-color); font-weight: bold;">visitar la página de Escatepec</a> directamente.
+  </p>
 </section>
 
+</main>
 
-    <section id="promociones" style="display:none;">
-      <h2>Promociones especiales</h2>
-      <p>Compra 3 cuadernos y obtén 1 gratis. Oferta válida hasta agotar existencias.</p>
-    </section>
-
-    <section id="servicios" style="display:none;">
-      <h2>Servicios</h2>
-      <ul>
-        <li>Encuadernado personalizado</li>
-        <li>Impresiones a color y blanco y negro</li>
-        <li>Venta de útiles escolares y material didáctico</li>
-      </ul>
-    </section>
-
-    <section id="informacion" style="display:none;">
-      <h2>Información de la tienda</h2>
-      <ul>
-        <li>Dirección: <a href="https://www.google.com/maps?q=CECyTEM+Ecatepec,+Sor+Juana+I.+de+la+Cruz,+Ecatepec,+Estado+de+México&output=embed" target="_blank" rel="noopener noreferrer">CECYTEM, Av. de los Estudiantes 100, Ciudad Escolar</a></li>
-        <li>Horario: Lun-Vie 9:00 - 19:00, Sáb 9:00 - 15:00</li>
-        <li>Teléfono: <a href="tel:+525515764800">+52 55-15-76-48-00</a></li>
-        <li>WhatsApp: <a href="https://wa.me/5215764800" target="_blank" rel="noopener noreferrer">+52 55 1576 4800</a></li>
-      </ul>
-    </section>
-
-    <section id="contacto" style="display:none;">
-      <h2>Contáctanos</h2>
-      <form id="formularioContacto" onsubmit="return enviarFormulario(event)">
-        <input type="text" name="nombre" placeholder="Tu nombre" required />
-        <input type="email" name="email" placeholder="Tu correo electrónico" required />
-        <textarea name="mensaje" rows="4" placeholder="Tu mensaje" required></textarea>
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
-
-  </main>
-
-  <div id="carrito">
-    <h3>Carrito de compras</h3>
-    <ul id="listaCarrito"></ul>
-    <div class="total" id="totalCarrito">Total: $0.00</div>
-    <button class="cerrar" onclick="toggleCarrito()">Cerrar carrito</button>
+<!-- Carrito -->
+<aside class="carrito" style="display:none;"
+  <h2>🛒 Carrito de Compra</h2>
+  <ul class="lista-carrito" id="lista-carrito"></ul>
+  <div class="total-carrito">
+    <strong>Total: $<span id="total">0.00</span></strong>
   </div>
+  <button id="finalizar" class="btn btn-accent" style="width: 100%;">Finalizar Venta</button>
+</aside>
 
-  <script>
-    // Mostrar secciones y ocultar otras
-    function mostrarSeccion(id) {
-      const secciones = document.querySelectorAll('main > section');
-      secciones.forEach(sec => {
-        sec.style.display = (sec.id === id) ? 'block' : 'none';
-      });
-    }
-    // Inicialmente mostrar inicio
-    mostrarSeccion('inicio');
+<footer>
+  &copy; 2025 Grupo 412 - Todos los derechos reservados
+</footer>
 
-    // Carrito de compras
-    const carrito = [];
-    function agregarAlCarrito(nombre, precio) {
-      carrito.push({ nombre, precio });
-      actualizarCarrito();
-      alert(nombre + " agregado al carrito");
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  // Productos (100 productos con img, nombre y descripción)
+  
+
+  // Variables de paginación
+  const productos = [
+  { id: 1, nombre: `Sacapuntas doble #1`, descripcion: `Sacapuntas doble #1 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `68.96`, img: `https://cdn.pixabay.com/photo/2017/02/01/10/29/pencil-2023567_1280.jpg` },
+  { id: 2, nombre: `Cinta adhesiva #2`, descripcion: `Cinta adhesiva #2 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `50.79`, img: `https://cdn.pixabay.com/photo/2015/09/05/20/02/office-924068_1280.jpg` },
+  { id: 3, nombre: `Cuaderno profesional #3`, descripcion: `Cuaderno profesional #3 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `5.89`, img: `https://cdn.pixabay.com/photo/2017/08/10/03/29/paper-2619013_1280.jpg` },
+  { id: 4, nombre: `Goma de borrar #4`, descripcion: `Goma de borrar #4 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `14.44`, img: `https://cdn.pixabay.com/photo/2016/03/09/09/30/desk-1245959_1280.jpg` },
+  { id: 5, nombre: `Colores de madera #5`, descripcion: `Colores de madera #5 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `11.54`, img: `https://cdn.pixabay.com/photo/2017/08/06/05/46/school-2596090_1280.jpg` },
+  { id: 6, nombre: `Clip sujetapapeles #6`, descripcion: `Clip sujetapapeles #6 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `41.85`, img: `https://cdn.pixabay.com/photo/2017/05/10/17/41/school-2308041_1280.jpg` },
+  { id: 7, nombre: `Bolígrafo azul #7`, descripcion: `Bolígrafo azul #7 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `11.35`, img: `https://cdn.pixabay.com/photo/2016/12/06/18/27/agenda-1887012_1280.jpg` },
+  { id: 8, nombre: `Sacapuntas doble #8`, descripcion: `Sacapuntas doble #8 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `40.68`, img: `https://cdn.pixabay.com/photo/2014/08/26/15/28/stationery-428620_1280.jpg` },
+  { id: 9, nombre: `Engrapadora mediana #9`, descripcion: `Engrapadora mediana #9 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `79.54`, img: `https://cdn.pixabay.com/photo/2016/11/21/12/42/notebook-1840276_1280.jpg` },
+  { id: 10, nombre: `Pluma estilográfica #10`, descripcion: `Pluma estilográfica #10 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `23.58`, img: `https://cdn.pixabay.com/photo/2016/03/26/13/09/notebooks-1281847_1280.jpg` },
+  { id: 11, nombre: `Cinta doble cara #11`, descripcion: `Cinta doble cara #11 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `65.80`, img: `https://cdn.pixabay.com/photo/2017/02/01/10/29/pencil-2023567_1280.jpg` },
+  { id: 12, nombre: `Notas adhesivas #12`, descripcion: `Notas adhesivas #12 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `61.68`, img: `https://cdn.pixabay.com/photo/2015/09/05/20/02/office-924068_1280.jpg` },
+  { id: 13, nombre: `Hojas recicladas #13`, descripcion: `Hojas recicladas #13 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `75.84`, img: `https://cdn.pixabay.com/photo/2017/08/10/03/29/paper-2619013_1280.jpg` },
+  { id: 14, nombre: `Resaltador fluorescente #14`, descripcion: `Resaltador fluorescente #14 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `41.66`, img: `https://cdn.pixabay.com/photo/2016/03/09/09/30/desk-1245959_1280.jpg` },
+  { id: 15, nombre: `Juego de geometría #15`, descripcion: `Juego de geometría #15 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `20.39`, img: `https://cdn.pixabay.com/photo/2017/08/06/05/46/school-2596090_1280.jpg` },
+  { id: 16, nombre: `Goma de borrar #16`, descripcion: `Goma de borrar #16 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `46.54`, img: `https://cdn.pixabay.com/photo/2017/05/10/17/41/school-2308041_1280.jpg` },
+  { id: 17, nombre: `Block de hojas blancas #17`, descripcion: `Block de hojas blancas #17 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `46.30`, img: `https://cdn.pixabay.com/photo/2016/12/06/18/27/agenda-1887012_1280.jpg` },
+  { id: 18, nombre: `Bolígrafo azul #18`, descripcion: `Bolígrafo azul #18 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `51.88`, img: `https://cdn.pixabay.com/photo/2014/08/26/15/28/stationery-428620_1280.jpg` },
+  { id: 19, nombre: `Etiquetas escolares #19`, descripcion: `Etiquetas escolares #19 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `42.69`, img: `https://cdn.pixabay.com/photo/2016/11/21/12/42/notebook-1840276_1280.jpg` },
+  { id: 20, nombre: `Marcadores permanentes #20`, descripcion: `Marcadores permanentes #20 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `51.33`, img: `https://cdn.pixabay.com/photo/2016/03/26/13/09/notebooks-1281847_1280.jpg` },
+  { id: 21, nombre: `Resaltador fluorescente #21`, descripcion: `Resaltador fluorescente #21 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `60.43`, img: `https://cdn.pixabay.com/photo/2017/02/01/10/29/pencil-2023567_1280.jpg` },
+  { id: 22, nombre: `Etiquetas escolares #22`, descripcion: `Etiquetas escolares #22 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `34.91`, img: `https://cdn.pixabay.com/photo/2015/09/05/20/02/office-924068_1280.jpg` },
+  { id: 23, nombre: `Bolígrafo azul #23`, descripcion: `Bolígrafo azul #23 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `33.79`, img: `https://cdn.pixabay.com/photo/2017/08/10/03/29/paper-2619013_1280.jpg` },
+  { id: 24, nombre: `Estuche escolar #24`, descripcion: `Estuche escolar #24 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `51.26`, img: `https://cdn.pixabay.com/photo/2016/03/09/09/30/desk-1245959_1280.jpg` },
+  { id: 25, nombre: `Plumones para pizarrón #25`, descripcion: `Plumones para pizarrón #25 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `49.24`, img: `https://cdn.pixabay.com/photo/2017/08/06/05/46/school-2596090_1280.jpg` },
+  { id: 26, nombre: `Hojas recicladas #26`, descripcion: `Hojas recicladas #26 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `56.99`, img: `https://cdn.pixabay.com/photo/2017/05/10/17/41/school-2308041_1280.jpg` },
+  { id: 27, nombre: `Caja organizadora #27`, descripcion: `Caja organizadora #27 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `63.26`, img: `https://cdn.pixabay.com/photo/2016/12/06/18/27/agenda-1887012_1280.jpg` },
+  { id: 28, nombre: `Marcadores permanentes #28`, descripcion: `Marcadores permanentes #28 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `11.53`, img: `https://cdn.pixabay.com/photo/2014/08/26/15/28/stationery-428620_1280.jpg` },
+  { id: 29, nombre: `Caja organizadora #29`, descripcion: `Caja organizadora #29 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `60.94`, img: `https://cdn.pixabay.com/photo/2016/11/21/12/42/notebook-1840276_1280.jpg` },
+  { id: 30, nombre: `Bolígrafo azul #30`, descripcion: `Bolígrafo azul #30 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `43.26`, img: `https://cdn.pixabay.com/photo/2016/03/26/13/09/notebooks-1281847_1280.jpg` },
+  { id: 31, nombre: `Cuaderno profesional #31`, descripcion: `Cuaderno profesional #31 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `44.03`, img: `https://cdn.pixabay.com/photo/2017/02/01/10/29/pencil-2023567_1280.jpg` },
+  { id: 32, nombre: `Carpeta tamaño carta #32`, descripcion: `Carpeta tamaño carta #32 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `30.83`, img: `https://cdn.pixabay.com/photo/2015/09/05/20/02/office-924068_1280.jpg` },
+  { id: 33, nombre: `Juego de geometría #33`, descripcion: `Juego de geometría #33 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `79.70`, img: `https://cdn.pixabay.com/photo/2017/08/10/03/29/paper-2619013_1280.jpg` },
+  { id: 34, nombre: `Goma de borrar #34`, descripcion: `Goma de borrar #34 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `36.23`, img: `https://cdn.pixabay.com/photo/2016/03/09/09/30/desk-1245959_1280.jpg` },
+  { id: 35, nombre: `Cinta adhesiva #35`, descripcion: `Cinta adhesiva #35 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `46.36`, img: `https://cdn.pixabay.com/photo/2017/08/06/05/46/school-2596090_1280.jpg` },
+  { id: 36, nombre: `Hojas recicladas #36`, descripcion: `Hojas recicladas #36 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `47.60`, img: `https://cdn.pixabay.com/photo/2017/05/10/17/41/school-2308041_1280.jpg` },
+  { id: 37, nombre: `Resaltador fluorescente #37`, descripcion: `Resaltador fluorescente #37 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `36.99`, img: `https://cdn.pixabay.com/photo/2016/12/06/18/27/agenda-1887012_1280.jpg` },
+  { id: 38, nombre: `Tijeras escolares #38`, descripcion: `Tijeras escolares #38 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `77.72`, img: `https://cdn.pixabay.com/photo/2014/08/26/15/28/stationery-428620_1280.jpg` },
+  { id: 39, nombre: `Carpeta tamaño carta #39`, descripcion: `Carpeta tamaño carta #39 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `68.56`, img: `https://cdn.pixabay.com/photo/2016/11/21/12/42/notebook-1840276_1280.jpg` },
+  { id: 40, nombre: `Hojas recicladas #40`, descripcion: `Hojas recicladas #40 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `6.77`, img: `https://cdn.pixabay.com/photo/2016/03/26/13/09/notebooks-1281847_1280.jpg` },
+  { id: 41, nombre: `Juego de geometría #41`, descripcion: `Juego de geometría #41 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `55.44`, img: `https://cdn.pixabay.com/photo/2017/02/01/10/29/pencil-2023567_1280.jpg` },
+  { id: 42, nombre: `Corrector líquido #42`, descripcion: `Corrector líquido #42 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `72.03`, img: `https://cdn.pixabay.com/photo/2015/09/05/20/02/office-924068_1280.jpg` },
+  { id: 43, nombre: `Notas adhesivas #43`, descripcion: `Notas adhesivas #43 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `6.84`, img: `https://cdn.pixabay.com/photo/2017/08/10/03/29/paper-2619013_1280.jpg` },
+  { id: 44, nombre: `Plumones para pizarrón #44`, descripcion: `Plumones para pizarrón #44 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `77.97`, img: `https://cdn.pixabay.com/photo/2016/03/09/09/30/desk-1245959_1280.jpg` },
+  { id: 45, nombre: `Hojas recicladas #45`, descripcion: `Hojas recicladas #45 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `67.25`, img: `https://cdn.pixabay.com/photo/2017/08/06/05/46/school-2596090_1280.jpg` },
+  { id: 46, nombre: `Resaltador fluorescente #46`, descripcion: `Resaltador fluorescente #46 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `63.30`, img: `https://cdn.pixabay.com/photo/2017/05/10/17/41/school-2308041_1280.jpg` },
+  { id: 47, nombre: `Pegamento en barra #47`, descripcion: `Pegamento en barra #47 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `72.42`, img: `https://cdn.pixabay.com/photo/2016/12/06/18/27/agenda-1887012_1280.jpg` },
+  { id: 48, nombre: `Marcadores permanentes #48`, descripcion: `Marcadores permanentes #48 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `26.32`, img: `https://cdn.pixabay.com/photo/2014/08/26/15/28/stationery-428620_1280.jpg` },
+  { id: 49, nombre: `Pegamento en barra #49`, descripcion: `Pegamento en barra #49 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `53.86`, img: `https://cdn.pixabay.com/photo/2016/11/21/12/42/notebook-1840276_1280.jpg` },
+  { id: 50, nombre: `Resaltador fluorescente #50`, descripcion: `Resaltador fluorescente #50 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `8.72`, img: `https://cdn.pixabay.com/photo/2016/03/26/13/09/notebooks-1281847_1280.jpg` },
+  { id: 51, nombre: `Pegamento en barra #51`, descripcion: `Pegamento en barra #51 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `70.84`, img: `https://cdn.pixabay.com/photo/2017/02/01/10/29/pencil-2023567_1280.jpg` },
+  { id: 52, nombre: `Lápiz HB #52`, descripcion: `Lápiz HB #52 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `66.86`, img: `https://cdn.pixabay.com/photo/2015/09/05/20/02/office-924068_1280.jpg` },
+  { id: 53, nombre: `Marcadores de pizarra #53`, descripcion: `Marcadores de pizarra #53 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `23.61`, img: `https://cdn.pixabay.com/photo/2017/08/10/03/29/paper-2619013_1280.jpg` },
+  { id: 54, nombre: `Goma de borrar #54`, descripcion: `Goma de borrar #54 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `52.02`, img: `https://cdn.pixabay.com/photo/2016/03/09/09/30/desk-1245959_1280.jpg` },
+  { id: 55, nombre: `Block de hojas blancas #55`, descripcion: `Block de hojas blancas #55 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `31.59`, img: `https://cdn.pixabay.com/photo/2017/08/06/05/46/school-2596090_1280.jpg` },
+  { id: 56, nombre: `Marcadores de pizarra #56`, descripcion: `Marcadores de pizarra #56 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `64.22`, img: `https://cdn.pixabay.com/photo/2017/05/10/17/41/school-2308041_1280.jpg` },
+  { id: 57, nombre: `Cuaderno profesional #57`, descripcion: `Cuaderno profesional #57 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `75.28`, img: `https://cdn.pixabay.com/photo/2016/12/06/18/27/agenda-1887012_1280.jpg` },
+  { id: 58, nombre: `Corrector líquido #58`, descripcion: `Corrector líquido #58 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `31.76`, img: `https://cdn.pixabay.com/photo/2014/08/26/15/28/stationery-428620_1280.jpg` },
+  { id: 59, nombre: `Marcadores de pizarra #59`, descripcion: `Marcadores de pizarra #59 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `24.32`, img: `https://cdn.pixabay.com/photo/2016/11/21/12/42/notebook-1840276_1280.jpg` },
+  { id: 60, nombre: `Tijeras escolares #60`, descripcion: `Tijeras escolares #60 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `69.50`, img: `https://cdn.pixabay.com/photo/2016/03/26/13/09/notebooks-1281847_1280.jpg` },
+  { id: 61, nombre: `Cuaderno profesional #61`, descripcion: `Cuaderno profesional #61 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `74.37`, img: `https://cdn.pixabay.com/photo/2017/02/01/10/29/pencil-2023567_1280.jpg` },
+  { id: 62, nombre: `Compás metálico #62`, descripcion: `Compás metálico #62 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `61.60`, img: `https://cdn.pixabay.com/photo/2015/09/05/20/02/office-924068_1280.jpg` },
+  { id: 63, nombre: `Cuaderno profesional #63`, descripcion: `Cuaderno profesional #63 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `39.70`, img: `https://cdn.pixabay.com/photo/2017/08/10/03/29/paper-2619013_1280.jpg` },
+  { id: 64, nombre: `Cinta doble cara #64`, descripcion: `Cinta doble cara #64 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `54.36`, img: `https://cdn.pixabay.com/photo/2016/03/09/09/30/desk-1245959_1280.jpg` },
+  { id: 65, nombre: `Marcadores de pizarra #65`, descripcion: `Marcadores de pizarra #65 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `20.91`, img: `https://cdn.pixabay.com/photo/2017/08/06/05/46/school-2596090_1280.jpg` },
+  { id: 66, nombre: `Pluma estilográfica #66`, descripcion: `Pluma estilográfica #66 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `11.92`, img: `https://cdn.pixabay.com/photo/2017/05/10/17/41/school-2308041_1280.jpg` },
+  { id: 67, nombre: `Hojas recicladas #67`, descripcion: `Hojas recicladas #67 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `39.42`, img: `https://cdn.pixabay.com/photo/2016/12/06/18/27/agenda-1887012_1280.jpg` },
+  { id: 68, nombre: `Clip sujetapapeles #68`, descripcion: `Clip sujetapapeles #68 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `77.44`, img: `https://cdn.pixabay.com/photo/2014/08/26/15/28/stationery-428620_1280.jpg` },
+  { id: 69, nombre: `Plumones para pizarrón #69`, descripcion: `Plumones para pizarrón #69 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `42.56`, img: `https://cdn.pixabay.com/photo/2016/11/21/12/42/notebook-1840276_1280.jpg` },
+  { id: 70, nombre: `Cinta adhesiva #70`, descripcion: `Cinta adhesiva #70 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `68.49`, img: `https://cdn.pixabay.com/photo/2016/03/26/13/09/notebooks-1281847_1280.jpg` },
+  { id: 71, nombre: `Pegamento en barra #71`, descripcion: `Pegamento en barra #71 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `72.41`, img: `https://cdn.pixabay.com/photo/2017/02/01/10/29/pencil-2023567_1280.jpg` },
+  { id: 72, nombre: `Plumones para pizarrón #72`, descripcion: `Plumones para pizarrón #72 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `30.78`, img: `https://cdn.pixabay.com/photo/2015/09/05/20/02/office-924068_1280.jpg` },
+  { id: 73, nombre: `Marcadores permanentes #73`, descripcion: `Marcadores permanentes #73 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `65.01`, img: `https://cdn.pixabay.com/photo/2017/08/10/03/29/paper-2619013_1280.jpg` },
+  { id: 74, nombre: `Lápiz HB #74`, descripcion: `Lápiz HB #74 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `5.06`, img: `https://cdn.pixabay.com/photo/2016/03/09/09/30/desk-1245959_1280.jpg` },
+  { id: 75, nombre: `Bolígrafo azul #75`, descripcion: `Bolígrafo azul #75 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `41.74`, img: `https://cdn.pixabay.com/photo/2017/08/06/05/46/school-2596090_1280.jpg` },
+  { id: 76, nombre: `Engrapadora mediana #76`, descripcion: `Engrapadora mediana #76 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `27.15`, img: `https://cdn.pixabay.com/photo/2017/05/10/17/41/school-2308041_1280.jpg` },
+  { id: 77, nombre: `Pegamento en barra #77`, descripcion: `Pegamento en barra #77 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `18.68`, img: `https://cdn.pixabay.com/photo/2016/12/06/18/27/agenda-1887012_1280.jpg` },
+  { id: 78, nombre: `Pegamento en barra #78`, descripcion: `Pegamento en barra #78 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `51.29`, img: `https://cdn.pixabay.com/photo/2014/08/26/15/28/stationery-428620_1280.jpg` },
+  { id: 79, nombre: `Bolígrafo azul #79`, descripcion: `Bolígrafo azul #79 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `25.02`, img: `https://cdn.pixabay.com/photo/2016/11/21/12/42/notebook-1840276_1280.jpg` },
+  { id: 80, nombre: `Corrector líquido #80`, descripcion: `Corrector líquido #80 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `11.11`, img: `https://cdn.pixabay.com/photo/2016/03/26/13/09/notebooks-1281847_1280.jpg` },
+  { id: 81, nombre: `Colores de madera #81`, descripcion: `Colores de madera #81 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `53.40`, img: `https://cdn.pixabay.com/photo/2017/02/01/10/29/pencil-2023567_1280.jpg` },
+  { id: 82, nombre: `Plumones para pizarrón #82`, descripcion: `Plumones para pizarrón #82 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `36.00`, img: `https://cdn.pixabay.com/photo/2015/09/05/20/02/office-924068_1280.jpg` },
+  { id: 83, nombre: `Bolígrafo azul #83`, descripcion: `Bolígrafo azul #83 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `17.24`, img: `https://cdn.pixabay.com/photo/2017/08/10/03/29/paper-2619013_1280.jpg` },
+  { id: 84, nombre: `Compás metálico #84`, descripcion: `Compás metálico #84 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `6.28`, img: `https://cdn.pixabay.com/photo/2016/03/09/09/30/desk-1245959_1280.jpg` },
+  { id: 85, nombre: `Clip sujetapapeles #85`, descripcion: `Clip sujetapapeles #85 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `79.26`, img: `https://cdn.pixabay.com/photo/2017/08/06/05/46/school-2596090_1280.jpg` },
+  { id: 86, nombre: `Cartulina blanca #86`, descripcion: `Cartulina blanca #86 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `45.67`, img: `https://cdn.pixabay.com/photo/2017/05/10/17/41/school-2308041_1280.jpg` },
+  { id: 87, nombre: `Plumones para pizarrón #87`, descripcion: `Plumones para pizarrón #87 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `61.02`, img: `https://cdn.pixabay.com/photo/2016/12/06/18/27/agenda-1887012_1280.jpg` },
+  { id: 88, nombre: `Marcadores de pizarra #88`, descripcion: `Marcadores de pizarra #88 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `11.01`, img: `https://cdn.pixabay.com/photo/2014/08/26/15/28/stationery-428620_1280.jpg` },
+  { id: 89, nombre: `Plumones para pizarrón #89`, descripcion: `Plumones para pizarrón #89 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `14.64`, img: `https://cdn.pixabay.com/photo/2016/11/21/12/42/notebook-1840276_1280.jpg` },
+  { id: 90, nombre: `Sacapuntas doble #90`, descripcion: `Sacapuntas doble #90 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `18.71`, img: `https://cdn.pixabay.com/photo/2016/03/26/13/09/notebooks-1281847_1280.jpg` },
+  { id: 91, nombre: `Hojas recicladas #91`, descripcion: `Hojas recicladas #91 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `12.08`, img: `https://cdn.pixabay.com/photo/2017/02/01/10/29/pencil-2023567_1280.jpg` },
+  { id: 92, nombre: `Carpeta tamaño carta #92`, descripcion: `Carpeta tamaño carta #92 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `27.69`, img: `https://cdn.pixabay.com/photo/2015/09/05/20/02/office-924068_1280.jpg` },
+  { id: 93, nombre: `Cuaderno profesional #93`, descripcion: `Cuaderno profesional #93 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `29.67`, img: `https://cdn.pixabay.com/photo/2017/08/10/03/29/paper-2619013_1280.jpg` },
+  { id: 94, nombre: `Pluma estilográfica #94`, descripcion: `Pluma estilográfica #94 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `6.31`, img: `https://cdn.pixabay.com/photo/2016/03/09/09/30/desk-1245959_1280.jpg` },
+  { id: 95, nombre: `Resaltador fluorescente #95`, descripcion: `Resaltador fluorescente #95 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `39.67`, img: `https://cdn.pixabay.com/photo/2017/08/06/05/46/school-2596090_1280.jpg` },
+  { id: 96, nombre: `Pluma estilográfica #96`, descripcion: `Pluma estilográfica #96 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `66.76`, img: `https://cdn.pixabay.com/photo/2017/05/10/17/41/school-2308041_1280.jpg` },
+  { id: 97, nombre: `Cuaderno profesional #97`, descripcion: `Cuaderno profesional #97 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `57.41`, img: `https://cdn.pixabay.com/photo/2016/12/06/18/27/agenda-1887012_1280.jpg` },
+  { id: 98, nombre: `Juego de geometría #98`, descripcion: `Juego de geometría #98 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `6.96`, img: `https://cdn.pixabay.com/photo/2014/08/26/15/28/stationery-428620_1280.jpg` },
+  { id: 99, nombre: `Libreta cuadriculada #99`, descripcion: `Libreta cuadriculada #99 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `46.57`, img: `https://cdn.pixabay.com/photo/2016/11/21/12/42/notebook-1840276_1280.jpg` },
+  { id: 100, nombre: `Tijeras escolares #100`, descripcion: `Tijeras escolares #100 de excelente calidad, perfecto para uso escolar, oficina o tareas creativas.`, precio: `37.24`, img: `https://cdn.pixabay.com/photo/2016/03/26/13/09/notebooks-1281847_1280.jpg` },
+];
+
+const productsPorPagina = 12;
+  let paginaActual = 1;
+  const totalPaginas = Math.ceil(productos.length / productsPorPagina);
+
+  // Mostrar productos con paginación
+  function mostrarProductos(pagina = 1) {
+    const catalogoDiv = document.getElementById('catalogo-productos');
+    catalogoDiv.innerHTML = '';
+    
+    const inicio = (pagina - 1) * productsPorPagina;
+    const fin = inicio + productsPorPagina;
+    const productosAPagina = productos.slice(inicio, fin);
+    
+    productosAPagina.forEach(p => {
+      const div = document.createElement('div');
+      div.className = 'producto';
+      div.innerHTML = `
+        <img src="${p.img}" alt="${p.nombre}" />
+        <div class="producto-content">
+          <h3>${p.nombre}</h3>
+          <p>${p.descripcion}</p>
+          <div class="precio">$${p.precio}</div>
+          <button onclick="toggleFavorito(${p.id})" class="btn btn-secondary" style="margin-bottom: 0.5rem;">❤️</button>
+          <button onclick="agregarCarrito(${p.id})" class="btn btn-primary">Agregar al carrito</button>
+        </div>
+      `;
+      catalogoDiv.appendChild(div);
+    });
+    
+    mostrarPaginacion();
+  }
+
+  // Mostrar paginación
+  function mostrarPaginacion() {
+    const paginationDiv = document.getElementById('pagination');
+    paginationDiv.innerHTML = '';
+    
+    // Botón anterior
+    const btnAnterior = document.createElement('button');
+    btnAnterior.textContent = '← Anterior';
+    btnAnterior.disabled = paginaActual === 1;
+    btnAnterior.onclick = () => cambiarPagina(paginaActual - 1);
+    paginationDiv.appendChild(btnAnterior);
+    
+    // Botones de números de página
+    for(let i = 1; i <= totalPaginas; i++) {
+      if(i === 1 || i === totalPaginas || (i >= paginaActual - 2 && i <= paginaActual + 2)) {
+        const btnPagina = document.createElement('button');
+        btnPagina.textContent = i;
+        btnPagina.className = i === paginaActual ? 'active' : '';
+        btnPagina.onclick = () => cambiarPagina(i);
+        paginationDiv.appendChild(btnPagina);
+      } else if(i === paginaActual - 3 || i === paginaActual + 3) {
+        const span = document.createElement('span');
+        span.textContent = '...';
+        span.style.padding = '0.5rem';
+        paginationDiv.appendChild(span);
+      }
     }
-    function actualizarCarrito() {
-      const lista = document.getElementById('listaCarrito');
-      const totalElem = document.getElementById('totalCarrito');
-      lista.innerHTML = '';
-      let total = 0;
-      carrito.forEach((item, i) => {
+    
+    // Botón siguiente
+    const btnSiguiente = document.createElement('button');
+    btnSiguiente.textContent = 'Siguiente →';
+    btnSiguiente.disabled = paginaActual === totalPaginas;
+    btnSiguiente.onclick = () => cambiarPagina(paginaActual + 1);
+    paginationDiv.appendChild(btnSiguiente);
+  }
+
+  // Cambiar página
+  function cambiarPagina(nuevaPagina) {
+    if(nuevaPagina >= 1 && nuevaPagina <= totalPaginas) {
+      paginaActual = nuevaPagina;
+      mostrarProductos(paginaActual);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  // Manejo de secciones
+  function mostrarSeccion(seccion) {
+    // Ocultar todas las secciones
+    document.querySelectorAll('main > section').forEach(sec => {
+      sec.style.display = 'none';
+    });
+    
+    // Mostrar la sección seleccionada
+    document.getElementById(seccion).style.display = 'block';
+    
+    // Actualizar navegación activa
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.classList.remove('active');
+    });
+    document.querySelector(`[onclick="mostrarSeccion('${seccion}')"]`).classList.add('active');
+    
+    // Si es catálogo, mostrar productos
+    if(seccion === 'catalogo') {
+      mostrarProductos(1);
+      paginaActual = 1;
+    }
+  }
+
+  // Carrito
+  let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+  function actualizarCarrito() {
+    const lista = document.getElementById('lista-carrito');
+    lista.innerHTML = '';
+    let total = 0;
+    
+    if(carrito.length === 0) {
+      lista.innerHTML = '<li style="text-align: center; color: #6b7280; padding: 2rem;">El carrito está vacío</li>';
+    } else {
+      carrito.forEach(item => {
+        const p = productos.find(prod => prod.id === item.id);
         const li = document.createElement('li');
-        li.textContent = item.nombre + " - $" + item.precio.toFixed(2);
+        li.innerHTML = `
+          <img src="${p.img}" alt="${p.nombre}">
+          <div class="info">
+            <p><strong>${p.nombre}</strong></p>
+            <p>Cantidad: ${item.cantidad}</p>
+          </div>
+          <div class="precio">$${(p.precio * item.cantidad).toFixed(2)}</div>
+          <button class="borrar" onclick="quitarDelCarrito(${p.id})" title="Eliminar">×</button>
+        `;
         lista.appendChild(li);
-        total += item.precio;
+        total += p.precio * item.cantidad;
       });
-      totalElem.textContent = "Total: $" + total.toFixed(2);
     }
-    function toggleCarrito() {
-      const carritoDiv = document.getElementById('carrito');
-      carritoDiv.style.display = (carritoDiv.style.display === 'flex') ? 'none' : 'flex';
-    }
+    
+    document.getElementById('total').textContent = total.toFixed(2);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+  }
 
-    // Envío de formulario (simulado)
-    function enviarFormulario(e) {
-      e.preventDefault();
-      alert("Mensaje enviado, gracias por contactarnos.");
-      e.target.reset();
-      mostrarSeccion('inicio');
-      return false;
+  function agregarCarrito(id) {
+    const index = carrito.findIndex(item => item.id === id);
+    if(index > -1) {
+      carrito[index].cantidad++;
+    } else {
+      carrito.push({id, cantidad: 1});
     }
-  </script>
+    actualizarCarrito();
+    
+    // Mostrar notificación
+    const producto = productos.find(p => p.id === id);
+    mostrarNotificacion(`${producto.nombre} agregado al carrito`);
+  }
+
+  function quitarDelCarrito(id) {
+    const producto = productos.find(p => p.id === id);
+    carrito = carrito.filter(item => item.id !== id);
+    actualizarCarrito();
+    mostrarNotificacion(`${producto.nombre} eliminado del carrito`);
+  }
+
+  function mostrarNotificacion(mensaje) {
+    const notif = document.createElement('div');
+    notif.style.cssText = `
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      background: var(--accent-color);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: var(--shadow-lg);
+      z-index: 10000;
+      animation: slideIn 0.3s ease;
+    `;
+    notif.textContent = mensaje;
+    document.body.appendChild(notif);
+    
+    setTimeout(() => {
+      notif.remove();
+    }, 3000);
+  }
+
+  
+  let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+
+  function toggleFavorito(id) {
+    const index = favoritos.indexOf(id);
+    if (index === -1) {
+      favoritos.push(id);
+      mostrarNotificacion('Agregado a favoritos ❤️');
+    } else {
+      favoritos.splice(index, 1);
+      mostrarNotificacion('Eliminado de favoritos 💔');
+    }
+    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+  }
+
+  // Comentarios simples por producto
+  const comentarios = {};
+
+  function agregarComentario(id, texto) {
+    if (!comentarios[id]) comentarios[id] = [];
+    comentarios[id].push(texto);
+    mostrarNotificacion('Comentario agregado');
+    mostrarComentarios(id);
+  }
+
+  function mostrarComentarios(id) {
+    const contenedor = document.getElementById(`comentarios-${id}`);
+    if (!contenedor || !comentarios[id]) return;
+    contenedor.innerHTML = comentarios[id].map(c => `<p style="font-size: 0.8rem; color: #4b5563; margin: 0.3rem 0;">🗨️ ${c}</p>`).join('');
+  }
+
+
+  // Finalizar venta y generar PDF
+  document.getElementById('finalizar').addEventListener('click', () => {
+    if(carrito.length === 0) {
+      alert('El carrito está vacío.');
+      return;
+    }
+    generarPDF();
+  });
+
+  async function generarPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Encabezado
+    doc.setFillColor(37, 99, 235);
+    doc.rect(0, 0, 210, 40, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(24);
+    doc.text('TICKET DE COMPRA', 105, 20, null, null, 'center');
+    doc.setFontSize(14);
+    doc.text('Grupo 412 - Mi Tienda', 105, 30, null, null, 'center');
+
+    // Info comercio
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(10);
+    doc.text('CECyTEM Plantel Ecatepec', 20, 50);
+    doc.text('Calle Sor Juana Inés de la Cruz S/N, Tierra Blanca', 20, 55);
+    doc.text('55020 Ecatepec de Morelos, México', 20, 60);
+
+    // Fecha y hora
+    const fechaHora = new Date().toLocaleString('es-MX');
+    doc.text(`Fecha: ${fechaHora}`, 140, 50);
+
+    doc.setDrawColor(37, 99, 235);
+    doc.line(20, 70, 190, 70);
+
+    let y = 85;
+    let total = 0;
+
+    // Tabla de productos
+    doc.setFontSize(12);
+    doc.setFont(undefined, 'bold');
+    doc.text('Producto', 20, y);
+    doc.text('Cant.', 120, y);
+    doc.text('Precio', 140, y);
+    doc.text('Subtotal', 170, y);
+    y += 10;
+    doc.line(20, y - 2, 190, y - 2);
+    doc.setFont(undefined, 'normal');
+
+    carrito.forEach(item => {
+      const p = productos.find(prod => prod.id === item.id);
+      const subtotal = parseFloat(p.precio) * item.cantidad;
+
+      doc.text(p.nombre.substring(0, 25), 20, y);
+      doc.text(item.cantidad.toString(), 125, y);
+      doc.text(`$${p.precio}`, 145, y);
+      doc.text(`$${subtotal.toFixed(2)}`, 175, y);
+      y += 8;
+      total += subtotal;
+    });
+
+    doc.line(20, y + 5, 190, y + 5);
+    y += 15;
+    doc.setFontSize(14);
+    doc.setFont(undefined, 'bold');
+    doc.text(`Subtotal: $${total.toFixed(2)}`, 140, y);
+
+    // IVA y total con IVA
+    const iva = total * 0.16;
+    const totalConIVA = total + iva;
+    y += 10;
+    doc.text(`IVA (16%): $${iva.toFixed(2)}`, 140, y);
+    y += 10;
+    doc.text(`TOTAL CON IVA: $${totalConIVA.toFixed(2)}`, 140, y);
+
+    // Método de pago
+    y += 20;
+    doc.setFont(undefined, 'normal');
+    doc.setFontSize(11);
+    doc.text('Método de pago: Tarjeta de débito', 20, y);
+
+    // Número de transacción
+    const transaccion = Math.floor(100000 + Math.random() * 900000);
+    y += 8;
+    doc.text(`No. Transacción: ${transaccion}`, 20, y);
+
+    // WhatsApp
+    y += 10;
+    doc.text('Contáctanos: +52 55 1234 5678', 20, y);
+    y += 7;
+    doc.textWithLink('Enviar mensaje por WhatsApp', 20, y, { url: 'https://wa.me/525512345678' });
+
+    // Agradecimiento
+    y += 20;
+    doc.setFontSize(12);
+    doc.text('¡Gracias por su compra!', 105, y, null, null, 'center');
+    doc.text('Grupo 412 - CECyTEM Plantel Ecatepec', 105, y + 10, null, null, 'center');
+
+    doc.save('ticket_compra.pdf');
+
+    carrito = [];
+    actualizarCarrito();
+    mostrarNotificacion('¡Compra realizada exitosamente!');
+  }
+
+  // Inicializar
+  document.addEventListener('DOMContentLoaded', () => {
+    actualizarCarrito();
+    mostrarProductos(1);
+  });
+
+  
+  // Mostrar/ocultar carrito
+  function toggleCarrito() {
+    const carrito = document.querySelector('aside.carrito');
+    carrito.style.display = (carrito.style.display === 'none' || carrito.style.display === '') ? 'block' : 'none';
+  }
+
+
+  
+  function toggleModo() {
+    const root = document.documentElement;
+    const modoActual = root.getAttribute('data-tema') || 'claro';
+    const nuevoModo = modoActual === 'claro' ? 'oscuro' : 'claro';
+    root.setAttribute('data-tema', nuevoModo);
+    localStorage.setItem('tema', nuevoModo);
+    aplicarTema(nuevoModo);
+  }
+
+  function aplicarTema(modo) {
+    const root = document.documentElement;
+    if (modo === 'oscuro') {
+      root.style.setProperty('--background', '#1f2937');
+      root.style.setProperty('--card-bg', '#374151');
+      root.style.setProperty('--text-dark', '#f9fafb');
+      root.style.setProperty('--text-light', '#d1d5db');
+    } else {
+      root.style.setProperty('--background', '#f8fafc');
+      root.style.setProperty('--card-bg', '#ffffff');
+      root.style.setProperty('--text-dark', '#1f2937');
+      root.style.setProperty('--text-light', '#6b7280');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const modoGuardado = localStorage.getItem('tema') || 'claro';
+    document.documentElement.setAttribute('data-tema', modoGuardado);
+    aplicarTema(modoGuardado);
+  });
+
+
+  // Añadir animaciones CSS dinámicamente
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+  `;
+  document.head.appendChild(style);
+
+</script>
+
+
+<!-- Botón flotante para mostrar/ocultar carrito -->
+<button onclick="toggleCarrito()" style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  z-index: 1100;
+" title="Mostrar/Ocultar carrito">🛒</button>
+
+
+<!-- Botón modo oscuro/claro -->
+<button onclick="toggleModo()" style="
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  background-color: var(--text-dark);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  z-index: 1100;
+" title="Cambiar modo">🌗</button>
 
 </body>
 </html>
